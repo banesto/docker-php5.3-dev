@@ -1,10 +1,13 @@
+## Docker Hub
+[Link to Docker Hub](https://hub.docker.com/r/banesto/docker-php5.3-dev/)
+
 ## docker-compose.yml example:
 
 ```
 version: '2'
 services:
   app:
-    build: .
+    image: banesto/docker-php5.3-dev
     container_name: web
     volumes:
       - .:/var/www/html
