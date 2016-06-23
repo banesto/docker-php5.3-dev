@@ -90,7 +90,5 @@ EXPOSE 3306
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY .database /database
-
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/bash"]
