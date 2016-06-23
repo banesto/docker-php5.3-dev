@@ -2,7 +2,7 @@ version: '2'
 services:
   app:
     build: .
-    container_name: php-w-web
+    container_name: web
     volumes:
       - .:/var/www/html
       - ./.database:/var/lib/mysql
@@ -10,42 +10,7 @@ services:
       - "80:80"
       - "33066:3306"
     stdin_open: true
-    # restart: always
-    # entrypoint: /entrypoint.sh
-    # environment:
-    #   WORDPRESS_DB_HOST: db:3306
-    #   WORDPRESS_DB_PASSWORD: jurasdzeni
-    #   WORDPRESS_DB_USER: jurasdzeni
-    #   WORDPRESS_DB_PASSWORD: jurasdzeni
-
-# db:
-#   image: mysql:5.7
-#   volumes:
-#     - "./.database:/var/lib/mysql"
-#   # restart: always
-#   environment:
-#     MYSQL_ROOT_PASSWORD: jurasdzeni
-#     MYSQL_DATABASE: jurasdzeni
-#     MYSQL_USER: jurasdzeni
-#     MYSQL_PASSWORD: jurasdzeni
-#   ports:
-#     - "33066:3306"
-
-# web:
-#   build: .
-#   depends_on:
-#     - db
-#   container_name: web
-#   volumes:
-#     - ~/Code/docker2:/var/www/html
-#   links:
-#     - db
-#   ports:
-#     - "8000:80"
-  # restart: always
-  # entrypoint: /entrypoint.sh
-  # environment:
-  #   WORDPRESS_DB_HOST: db:3306
-  #   WORDPRESS_DB_PASSWORD: jurasdzeni
-  #   WORDPRESS_DB_USER: jurasdzeni
-  #   WORDPRESS_DB_PASSWORD: jurasdzeni
+    environment:
+      DB_NAME: jurasdzeni
+      DB_USER: wordpress
+      DB_PASS: wordpress
