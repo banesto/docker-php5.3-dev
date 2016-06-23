@@ -1,0 +1,54 @@
+FROM centos:6
+
+RUN \
+  yum -y update && \
+  yum -y install \
+    git \
+    httpd \
+    mod_perl \
+    nano \
+    rsync \
+    ruby \
+    vsftpd \
+    wget
+
+RUN \
+  yum -y install ntp && \
+  rm -rf /etc/localtime && \
+  ln -s /usr/share/zoneinfo/EET /etc/localtime
+
+RUN rpm -Uvh http://repo.webtatic.com/yum/el6/latest.rpm
+RUN \
+  yum -y install \
+    php54w \
+    php54w-fpm \
+    php54w-mbstring \
+    php54w-cli \
+    php54w-gd \
+    php54w-mysql \
+    php54w-devel \
+    php54w-pecl-memcache \
+    php54w-pspell \
+    #php54w-snmp \
+    php54w-xmlrpc \
+    php54w-xml php54w-pear
+
+RUN \
+  yum -y install rubygems && \
+  gem install sass --no-rdoc --no-ri && \
+  gem install bundler --no-rdoc --no-ri
+
+ENV \
+  LC_ALL=en_US.UTF-8 \
+  LANG=en_US.UTF-8
+
+EXPOSE 80
+
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+COPY .database /database
+
+# COPY .sql/*.sql /sql/
+
+ENTRYPOINT ["/entrypoint.sh"]
+#CMD ["apache2-foreground"]
