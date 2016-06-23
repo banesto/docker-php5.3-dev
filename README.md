@@ -1,3 +1,6 @@
+## docker-compose.yml example:
+
+```
 version: '2'
 services:
   app:
@@ -14,3 +17,4 @@ services:
       DB_NAME: jurasdzeni
       DB_USER: wordpress
       DB_PASS: wordpress
+```
