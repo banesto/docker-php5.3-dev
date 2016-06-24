@@ -58,7 +58,7 @@ RUN sed -i \
   -e 's~^Timeout \(.*\)$~Timeout 120~g' \
   -e 's~^#ServerName \(.*\)$~ServerName 0.0.0.0:80~g' \
   -e 's~^DirectoryIndex \(.*\)$~DirectoryIndex index.html index.html.var index.php~g' \
-  -e 's~^#EnableSendfile \(.*\)$~EnableSendfile On~g' \
+  -e 's~^#EnableSendfile \(.*\)$~EnableSendfile Off~g' \
   -e 's~AllowOverride \(.*\)$~AllowOverride All~g' \
   /etc/httpd/conf/httpd.conf
 
