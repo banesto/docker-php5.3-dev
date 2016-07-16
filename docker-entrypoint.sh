@@ -12,6 +12,11 @@ trap before_exit EXIT
 
 set -eo pipefail
 
+cd /var/www/html && \
+  npm install && \
+  bower install --allow-root
+cd /
+
 /etc/init.d/mysqld start
 /etc/init.d/httpd start
 echo ""
